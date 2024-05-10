@@ -149,6 +149,8 @@ SIMPLE_JWT = {
   "TOKEN_OBTAIN_SERIALIZER": "my_app.serializers.MyTokenObtainPairSerializer",
   # ...
 }
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
