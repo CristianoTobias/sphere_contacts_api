@@ -29,7 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'sphere-contacts-app-536b57464524.herokuapp.com',
-    # Add other allowed hosts as needed
+    # Adicione outros hosts permitidos conforme necessário
+    'localhost',
+    '127.0.0.1',
 ]
 
 # Application definition
