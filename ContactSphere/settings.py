@@ -27,8 +27,10 @@ SECRET_KEY = 'django-insecure-64ig+e89mfosf&nve9%lob@!617ma@f5_j$l^gxf8pt@1o!_p%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'sphere-contacts-app-536b57464524.herokuapp.com',
+    # Add other allowed hosts as needed
+]
 
 # Application definition
 
