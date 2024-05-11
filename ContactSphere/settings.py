@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -92,8 +93,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ContactSphere.wsgi.application'
-
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -151,7 +152,7 @@ SIMPLE_JWT = {
   "TOKEN_OBTAIN_SERIALIZER": "my_app.serializers.MyTokenObtainPairSerializer",
   # ...
 }
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 
 SIMPLE_JWT = {
