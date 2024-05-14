@@ -16,6 +16,13 @@ class UserRegSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length=150)
     password = serializers.CharField(max_length=100, write_only=True)
     
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username= validated_data['username'],
+            password= validated_data['password']
+        )
+        return user
+    
     class Meta:  # Adicionando a classe Meta
         model = User
         fields = ['username', 'password']  # Especifique os campos que serão incluídos no serializer
