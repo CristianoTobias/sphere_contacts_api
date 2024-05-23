@@ -27,7 +27,7 @@ SECRET_KEY = 'sua_chave_secreta_aqui'  # Defina sua chave secreta de forma segur
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '.vercel.app',
+    'https://sphere-contacts.vercel.app"',
 ]
 
 # Application definition
@@ -83,7 +83,7 @@ ROOT_URLCONF = 'ContactSphere.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'ContactsApp', 'templates'),],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
