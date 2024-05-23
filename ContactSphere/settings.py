@@ -28,8 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '.vercel.app',
-    'localhost',
-    '127.0.0.1',
 ]
 
 # Application definition
@@ -60,7 +58,6 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
     "https://sphere-contacts.vercel.app",
 ]
 
