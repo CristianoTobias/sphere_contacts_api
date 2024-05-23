@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'https://sphere-contacts.vercel.app"',
+    'sphere-contacts-api.vercel.app',
 ]
 
 # Application definition
