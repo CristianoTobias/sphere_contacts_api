@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'https://sphere-contacts.vercel.app"',
-    
+    'https://sphere-contacts-api.vercel.app',
     
 ]
 
@@ -61,6 +61,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://sphere-contacts.vercel.app",
+    'https://sphere-contacts-api.vercel.app',
 ]
 
 REST_FRAMEWORK = {
