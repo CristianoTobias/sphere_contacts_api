@@ -10,3 +10,4 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.name
+

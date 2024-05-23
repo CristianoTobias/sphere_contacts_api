@@ -27,7 +27,7 @@ SECRET_KEY = 'sua_chave_secreta_aqui'  # Defina sua chave secreta de forma segur
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'sphere-contacts-app-536b57464524.herokuapp.com',
+    '.vercel.app',
     'localhost',
     '127.0.0.1',
 ]
@@ -68,9 +68,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+     
 
 }
+
+# contacts_project/settings.py
+
 SIMPLE_JWT = {
   # It will work instead of the default serializer(TokenObtainPairSerializer).
   "TOKEN_OBTAIN_SERIALIZER": "my_app.serializers.MyTokenObtainPairSerializer",
@@ -82,7 +86,7 @@ ROOT_URLCONF = 'ContactSphere.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'seu_app', 'templates'),],
+        'DIRS': [ os.path.join(BASE_DIR, 'ContactsApp', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
