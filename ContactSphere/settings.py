@@ -27,7 +27,7 @@ SECRET_KEY = 'sua_chave_secreta_aqui'  # Defina sua chave secreta de forma segur
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'sphere-contacts.vercel.app"',
+    'sphere-contacts.vercel.app',
     'sphere-contacts-api.vercel.app',
     
 ]
