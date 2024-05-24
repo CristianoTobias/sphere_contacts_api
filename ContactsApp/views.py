@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes,  authentication_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ContactsSerializer, UserSerializer, UserRegSerializer
@@ -25,9 +26,10 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @authentication_classes([JWTAuthentication])
-@permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def home(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     # Mensagem que você deseja exibir
     message = "Bem-vindo à página inicial!"
     
@@ -35,9 +37,10 @@ def home(request):
     return Response({'message': message})
 
 @authentication_classes([JWTAuthentication])
-@permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def user_contacts(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     if not request.user.is_authenticated:
         return Response({"message": "Usuário não autenticado"}, status=401)
     
@@ -46,8 +49,9 @@ def user_contacts(request):
     return Response(serializer.data)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def add_contact(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     default_user = request.user if request.user.is_authenticated else None
     data = request.data.copy()
     data['user'] = default_user.id if default_user else None
@@ -60,16 +64,18 @@ def add_contact(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_user_details(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     user = request.user
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def list_users(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -77,6 +83,8 @@ def list_users(request):
 
 @api_view(['POST'])
 def user_registration(request):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer = UserRegSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
@@ -85,8 +93,9 @@ def user_registration(request):
 
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
 def delete_contact(request, pk):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     try:
         contact = Contacts.objects.get(pk=pk)
     except Contacts.DoesNotExist:
@@ -97,8 +106,9 @@ def delete_contact(request, pk):
 
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
 def edit_contact(request, pk):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     try:
         contact = Contacts.objects.get(pk=pk)
     except Contacts.DoesNotExist:
