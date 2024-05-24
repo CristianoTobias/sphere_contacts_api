@@ -25,10 +25,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 
-@authentication_classes([JWTAuthentication])
 @api_view(['GET'])
 def home(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     # Mensagem que você deseja exibir
     message = "Bem-vindo à página inicial!"
@@ -36,10 +35,9 @@ def home(request):
     # Retorne uma resposta HTTP com a mensagem
     return Response({'message': message})
 
-@authentication_classes([JWTAuthentication])
 @api_view(['GET'])
 def user_contacts(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     if not request.user.is_authenticated:
         return Response({"message": "Usuário não autenticado"}, status=401)
@@ -50,7 +48,7 @@ def user_contacts(request):
 
 @api_view(['POST'])
 def add_contact(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     default_user = request.user if request.user.is_authenticated else None
     data = request.data.copy()
@@ -65,7 +63,7 @@ def add_contact(request):
 
 @api_view(['GET'])
 def get_user_details(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     user = request.user
     serializer = UserSerializer(user)
@@ -74,7 +72,7 @@ def get_user_details(request):
 
 @api_view(['GET'])
 def list_users(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
@@ -83,7 +81,7 @@ def list_users(request):
 
 @api_view(['POST'])
 def user_registration(request):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     serializer = UserRegSerializer(data=request.data)
     if serializer.is_valid():
@@ -94,7 +92,7 @@ def user_registration(request):
 
 @api_view(['DELETE'])
 def delete_contact(request, pk):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     try:
         contact = Contacts.objects.get(pk=pk)
@@ -107,7 +105,7 @@ def delete_contact(request, pk):
 
 @api_view(['PUT'])
 def edit_contact(request, pk):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
     try:
         contact = Contacts.objects.get(pk=pk)
