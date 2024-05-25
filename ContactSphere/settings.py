@@ -32,6 +32,7 @@ SECRET_KEY = os.environ["SECRET_KEY"] # Defina sua chave secreta de forma segura
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'sphere-contacts-4qtu8bgty-cristianotobias-projects.vercel.app'
     'sphere-contacts-api.vercel.app',
     'sphere-contacts.vercel.app',
     'localhost',
@@ -66,7 +67,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://sphere-contacts.vercel.app',
-    'https://sphere-contacts-api.vercel.app',
+    'https://sphere-contacts-4qtu8bgty-cristianotobias-projects.vercel.app',
     'https://localhost',
     
 ]
