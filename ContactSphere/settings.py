@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import dotenv
 from pathlib import Path
 from datetime import timedelta
 
@@ -20,8 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sua_chave_secreta_aqui'  # Defina sua chave secreta de forma segura
+SECRET_KEY = os.environ["SECRET_KEY"] # Defina sua chave secreta de forma segura
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,6 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'sphere-contacts-api.vercel.app',
     'sphere-contacts.vercel.app',
+    'localhost',
 ]
 
 # Application definition
@@ -61,6 +67,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'https://sphere-contacts.vercel.app',
     'https://sphere-contacts-api.vercel.app',
+    'https://localhost',
     
 ]
 
@@ -107,12 +114,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get("SQL_DATABASE", BASE_DIR / 'db.sqlite3'),
-        'USER': os.environ.get("SQL_USER", "user"),
-        'PASSWORD': os.environ.get("SQL_PASSWORD", "password"),
-        'HOST': os.environ.get("SQL_HOST", "localhost"),
-        'PORT': os.environ.get("SQL_PORT", "5432"),
+        'ENGINE': os.environ["ENGINE"],
+        'NAME': os.environ["NAME"],
+        'USER': os.environ["USER"],
+        'PASSWORD': os.environ["PASSWORD"],
+        'HOST': os.environ["HOST"],
+        'PORT': os.environ["PORT"],
     }
 }
 
