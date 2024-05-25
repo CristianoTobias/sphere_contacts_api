@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.vercel.app',
     'sphere-contacts-api.vercel.app',
-    'cristianotobias-projects.vercel.app',  # Adiciona seu frontend Vercel aqui
+    'sphere-contacts.vercel.app',
 ]
 
 # Application definition
