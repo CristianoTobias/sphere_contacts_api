@@ -27,9 +27,6 @@ SECRET_KEY = 'sua_chave_secreta_aqui'  # Defina sua chave secreta de forma segur
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.vercel.app',
     'sphere-contacts-api.vercel.app',
     'sphere-contacts.vercel.app',
 ]
@@ -62,10 +59,6 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'https://sphere-contacts.vercel.app/',
     'https://sphere-contacts.vercel.app',
     'https://sphere-contacts-api.vercel.app',
     
