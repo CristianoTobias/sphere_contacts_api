@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',  # Desenvolvimento local (caso necessário)
     'sphere-contacts.vercel.app',  # Frontend em produção
     'sphere-contacts-api.vercel.app',  # Backend em produção
+    '.vercel.app',
 ]
 
 # Application definition
@@ -64,6 +65,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Frontend local
     'https://sphere-contacts.vercel.app',  # Frontend em produção
     'https://sphere-contacts-api.vercel.app',  # Backend em produção
+    '.vercel.app',
 ]
 
 
