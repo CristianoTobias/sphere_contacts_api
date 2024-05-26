@@ -112,16 +112,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'sphere_contacts_api',
-#         'USER': 'admin',
-#         'PASSWORD': 'ebac@2024',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sphere_contacts_api',
+        'USER': 'admin',
+        'PASSWORD': 'ebac@2024',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 DATABASES['default'] = dj_database_url.config()
 
