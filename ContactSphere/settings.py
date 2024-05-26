@@ -65,7 +65,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Frontend local
     'https://sphere-contacts.vercel.app',  # Frontend em produção
     'https://sphere-contacts-api.vercel.app',  # Backend em produção
-    '.vercel.app',
+    
 ]
 
 
