@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "SECRET_KEY" # Defina sua chave secreta de forma segura
+SECRET_KEY = "SECRET_KEY"  # Defina sua chave secreta de forma segura
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -67,9 +67,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Frontend local
     'https://sphere-contacts.vercel.app',  # Frontend em produção
     'https://sphere-contacts-api.vercel.app',  # Backend em produção
-    
 ]
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -123,8 +121,8 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config()
-
+# Override the default database configuration with dj_database_url if available
+DATABASES['default'].update(dj_database_url.config(default='postgres://admin:ebac@2024@localhost:5432/sphere_contacts_api', conn_max_age=600))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
