@@ -9,4 +9,4 @@ python manage.py makemigrations --noinput
 python manage.ph migrate --noinput
 
 echo "Collect Static..."
-python3.12 manage.py collectstatic --noimput --clear
+python manage.py collectstatic --noimput --clear
