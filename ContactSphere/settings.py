@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+from decouple import config
 import dj_database_url
 from pathlib import Path
 from datetime import timedelta
@@ -105,7 +106,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ContactSphere.wsgi.application'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles_build' / "static"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Database
