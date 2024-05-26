@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-from decouple import config
-import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 
@@ -112,16 +110,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sphere_contacts_api',
-        'USER': 'admin',
-        'PASSWORD': 'ebac@2024',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_DATABASE'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
-
-# Atualiza DATABASES['default'] com a configuração do banco de dados usando dj_database_url.config()
-DATABASES['default'].update(dj_database_url.config(default='postgres://admin:ebac@2024@localhost:5432/sphere_contacts_api'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
