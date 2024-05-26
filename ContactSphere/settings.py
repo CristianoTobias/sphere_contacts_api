@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-import dotenv
 from pathlib import Path
 from datetime import timedelta
 
@@ -21,21 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"] # Defina sua chave secreta de forma segura
+SECRET_KEY = "SECRET_KEY" # Defina sua chave secreta de forma segura
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'sphere-contacts-4qtu8bgty-cristianotobias-projects.vercel.app'
-    'sphere-contacts-api.vercel.app',
-    'sphere-contacts.vercel.app',
-    'localhost',
+    'localhost',  # Desenvolvimento local
+    '127.0.0.1',  # Desenvolvimento local (caso necessário)
+    'sphere-contacts.vercel.app',  # Frontend em produção
+    'sphere-contacts-api.vercel.app',  # Backend em produção
 ]
 
 # Application definition
@@ -66,11 +61,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://sphere-contacts.vercel.app',
-    'https://sphere-contacts-4qtu8bgty-cristianotobias-projects.vercel.app',
-    'https://localhost',
-    
+    'http://localhost:3000',  # Frontend local
+    'https://sphere-contacts.vercel.app',  # Frontend em produção
+    'https://sphere-contacts-api.vercel.app',  # Backend em produção
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -115,12 +110,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ["ENGINE"],
-        'NAME': os.environ["NAME"],
-        'USER': os.environ["USER"],
-        'PASSWORD': os.environ["PASSWORD"],
-        'HOST': os.environ["HOST"],
-        'PORT': os.environ["PORT"],
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sphere_contacts_api',
+        'USER': 'admin',
+        'PASSWORD': 'ebac@2024',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
