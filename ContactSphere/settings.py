@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "SECRET_KEY"  # Defina sua chave secreta de forma segura
+SECRET_KEY = "SECRET_KEY" # Defina sua chave secreta de forma segura
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,8 +77,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-# contacts_project/settings.py
-
 SIMPLE_JWT = {
   # It will work instead of the default serializer(TokenObtainPairSerializer).
   "TOKEN_OBTAIN_SERIALIZER": "my_app.serializers.MyTokenObtainPairSerializer",
@@ -110,6 +108,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Inicializa DATABASES como um dicionário vazio
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -121,8 +120,8 @@ DATABASES = {
     }
 }
 
-# Override the default database configuration with dj_database_url if available
-DATABASES['default'].update(dj_database_url.config(default='postgres://admin:ebac@2024@localhost:5432/sphere_contacts_api', conn_max_age=600))
+# Atualiza DATABASES['default'] com a configuração do banco de dados usando dj_database_url.config()
+DATABASES['default'].update(dj_database_url.config(default='postgres://admin:ebac@2024@localhost:5432/sphere_contacts_api'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -161,7 +160,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -181,7 +179,7 @@ SIMPLE_JWT = {
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
-    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+    "USER_AUTHENTICATION_RULE": "rest_framework.simplejwt.authentication.default_user_authentication_rule",
 
     "TOKEN_TYPE_CLAIM": "token_type",
     "TOKEN_USER_CLASS": "rest_framework.simplejwt.models.TokenUser",
