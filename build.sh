@@ -1,8 +1,15 @@
 #!/bin/bash
 
-# Instalar as dependências do projeto
-python pip install -r requirements.txt
+# Abort the script if any command fails
+set -e
 
-# Executar as migrações do banco de dados
-python manage.py makemigrations
-python manage.py migrate
+# Build the project
+echo "Building the project..."
+python3.12 -m pip install -r requirements.txt
+
+echo "Make Migration..."
+python manage.py makemigrations --noinput
+python manage.py migrate --noinput
+
+echo "Collect Static..."
+python manage.py collectstatic --noinput --clear
